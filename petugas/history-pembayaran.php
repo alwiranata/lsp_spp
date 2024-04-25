@@ -1,9 +1,8 @@
 <?php
-header("Content-type: application/vnd-ms-excel");
-header("Content-Disposition: attachment; filename=Laporan-Pembayaran-SPP.xls");
+$nisn = $_GET['nisn']
 ?>
-<h6 class='text-secondary'>Laporan Pembayaran SPP</h6>
 
+<h6 class='text-secondary'> History Pembayaran</h6>
 
 <table class="table table-striped mt-3 table-primary  table-bordered ">
     <tr class="fw-bold  bg-light">
@@ -34,13 +33,16 @@ header("Content-Disposition: attachment; filename=Laporan-Pembayaran-SPP.xls");
         <th class="text-primary text-center">
             Petugas
         </th>
+        <th class="text-primary text-center">
+            Hapus
+        </th>
 
     </tr>
     <!-- looping data  dan relasi db-->
     <?php
     include '../koneksi.php';
     $no = 1;
-    $sql = "SELECT*FROM pembayaran,siswa,kelas,spp,petugas WHERE pembayaran.nisn = siswa.nisn AND siswa.id_kelas = kelas.id_kelas AND pembayaran.id_spp = spp.id_spp AND pembayaran.id_petugas=pembayaran.id_petugas ORDER BY tgl_bayar DESC";
+    $sql = "SELECT*FROM pembayaran,siswa,kelas,spp,petugas WHERE pembayaran.nisn = siswa.nisn AND siswa.id_kelas = kelas.id_kelas AND pembayaran.id_spp = spp.id_spp AND pembayaran.id_petugas=pembayaran.id_petugas AND pembayaran.nisn ='$nisn' ORDER BY tgl_bayar DESC";
     $query = mysqli_query($koneksi, $sql);
     foreach ($query as $data) {
     ?>
@@ -73,7 +75,9 @@ header("Content-Disposition: attachment; filename=Laporan-Pembayaran-SPP.xls");
                 <?= $data["nama_petugas"] ?>
             </td>
 
-
+            <td class="text-secondary text-center">
+                <a href="?url=hapus-pembayaran&id_pembayaran=<?= $data['id_pembayaran'] ?>" class="btn btn-outline-danger ">Hapus</a>
+            </td>
         </tr>
 
     <?php } ?>
