@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Apr 2024 pada 02.43
+-- Waktu pembuatan: 25 Apr 2024 pada 09.24
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 7.4.16
 
@@ -38,7 +38,8 @@ CREATE TABLE `kelas` (
 --
 
 INSERT INTO `kelas` (`id_kelas`, `nama_kelas`, `kompetensi_keahlian`) VALUES
-(1, 'XII PPLG', 'Pengemabangan Perangkat Lunak dan Gim');
+(1, 'XII PPLG', 'Pengemabangan Perangkat Lunak dan Gim'),
+(2, 'XII DKV', 'DESAIN KOMUNIKASI VISUAL');
 
 -- --------------------------------------------------------
 
@@ -65,7 +66,8 @@ INSERT INTO `pembayaran` (`id_pembayaran`, `id_petugas`, `nisn`, `tgl_bayar`, `b
 (2, 1, '12345678', '2024-04-24', 'April', '2024', 1, 200000),
 (4, 1, '10101010', '2024-04-26', 'November', '', 1, 300000),
 (6, 1, '0094550194', '2024-04-18', 'Desember', '2024', 1, 231321),
-(9, 1, '0094550194', '2024-04-25', 'Desember', '2024', 1, 152335);
+(9, 1, '0094550194', '2024-04-25', 'Desember', '2024', 1, 152335),
+(11, 1, '231313', '2024-04-15', 'April', '2024', 2, 4900000);
 
 -- --------------------------------------------------------
 
@@ -86,7 +88,8 @@ CREATE TABLE `petugas` (
 --
 
 INSERT INTO `petugas` (`id_petugas`, `username`, `password`, `nama_petugas`, `level`) VALUES
-(1, 'admin', 'admin', 'Aldo', 'admin');
+(1, 'admin', 'admin', 'Aldo', 'admin'),
+(3, 'aldo', '12345678', 'alwi', 'petugas');
 
 -- --------------------------------------------------------
 
@@ -111,7 +114,8 @@ CREATE TABLE `siswa` (
 INSERT INTO `siswa` (`nisn`, `nis`, `nama`, `id_kelas`, `alamat`, `no_telp`, `id_spp`) VALUES
 ('0094550194', '231231', 'qwq', 1, 'dwdw', 323131, 1),
 ('10101010', '12345678', 'aldo', 1, '12345', 8, 1),
-('12345678', '219', 'aldo', 1, 'jl_kesuma', 895, 1);
+('12345678', '219', 'aldo', 1, 'jl_kesuma', 895, 1),
+('231313', '13123', 'adsda', 2, 'jlslsld', 232131, 2);
 
 -- --------------------------------------------------------
 
@@ -130,7 +134,8 @@ CREATE TABLE `spp` (
 --
 
 INSERT INTO `spp` (`id_spp`, `tahun`, `nominal`) VALUES
-(1, 2024, 400000);
+(1, 2024, 400000),
+(2, 2025, 5000000);
 
 --
 -- Indexes for dumped tables
@@ -174,25 +179,25 @@ ALTER TABLE `spp`
 -- AUTO_INCREMENT untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `petugas`
 --
 ALTER TABLE `petugas`
-  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `spp`
 --
 ALTER TABLE `spp`
-  MODIFY `id_spp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_spp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
